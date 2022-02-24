@@ -9,3 +9,14 @@ Scaffolding to make VirtualBox/Vagrant VM with:
 - node, 
 - npm
 - vagrant user/group configuration
+
+## Full-scaffolding Command
+#### First run (or re-run) provisioner script, passing some env variables:
+
+`RHEL_USERNAME='username' RHEL_PASSWORD='password' vagrant reload --provision` 
+
+Rhel username & password are your subscription-manager credential to rhel 8 site
+
+#### If already provisioned, simply:
+`vagrant up`
+
