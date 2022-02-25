@@ -13,10 +13,23 @@ Scaffolding to make VirtualBox/Vagrant VM with:
 ## Full-scaffolding Command
 #### First run (or re-run) provisioner script, passing some env variables:
 
-`RHEL_USERNAME='username' RHEL_PASSWORD='password' vagrant reload --provision` 
+`RHEL_USERNAME='username' RHEL_PASSWORD='password' vagrant provision`
+
+or
+
+`RHEL_USERNAME='username' RHEL_PASSWORD='password' vagrant reload --provision`
 
 Rhel username & password are your subscription-manager credential to rhel 8 site
 
 #### If already provisioned, simply:
 `vagrant up`
 
+___
+
+#### For DB configuration: 
+When mysql installed, run:
+`mysql_secure_installation` to configure manually DB, root usr/pswd, creates user, DB, ecc..
+
+#### To init Laravel app:
+
+`git clone <laravel-application>`
