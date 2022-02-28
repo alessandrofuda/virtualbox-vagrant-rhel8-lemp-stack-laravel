@@ -17,7 +17,7 @@ Scaffolding to make VirtualBox/Vagrant VM with:
 
 or
 
-`RHEL_USERNAME='username' RHEL_PASSWORD='password' vagrant reload --provision`
+`RHEL_USERNAME='username' RHEL_PASSWORD='password' vagrant reload --provision` (Imp: use single quotes for pswd)
 
 Rhel username & password are your subscription-manager credential to rhel 8 site
 

@@ -70,6 +70,8 @@ Vagrant.configure("2") do |config|
   #   apt-get update
   #   apt-get install -y apache2
   # SHELL
+
+
   config.vm.provision "shell" do |s|
       s.path = "bootstrap.sh"
       s.env = { 'RHEL_USERNAME' => ENV['RHEL_USERNAME'], 'RHEL_PASSWORD' => ENV['RHEL_PASSWORD'] }

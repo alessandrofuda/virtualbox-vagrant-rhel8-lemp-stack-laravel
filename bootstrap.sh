@@ -12,12 +12,12 @@ echo "++++++++++++++++++++++++++++++++++++++++"
 
 echo "Current user: " $(whoami)
 echo $((++step))') - Create app directory'
-mkdir -p "code/${APP_NAME}"
-chown -R vagrant:vagrant ./code
-chmod -R 775 ./code
+mkdir -p "/home/vagrant/code/${APP_NAME}"
+chown -R vagrant:vagrant /home/vagrant/code
+chmod -R 775 /home/vagrant/code
 
-echo $((++step))') - yum update'
-yum update -y
+# echo $((++step))') - yum update'
+# yum update -y
 
 echo $((++step))') - subscription manager to Rhel repo'
 subscription-manager register --username $RHEL_USERNAME --password $RHEL_PASSWORD --auto-attach
@@ -28,10 +28,6 @@ yum update -y
 echo $((++step))') - yum install nano'
 yum install -y nano
 
-echo $((++step))') - ssh-keygen'
-ssh-keygen -b 2048 -t rsa -f /home/vagrant/.ssh/id_rsa -q -N ""
-chown -R vagrant:vagrant /home/vagrant/.ssh
-
 echo $((++step))') - disable SELinux (disable temp & definitiv)'
 setenforce 0
 sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
@@ -39,6 +35,7 @@ sed -i 's/SELINUX=permissive/SELINUX=disabled/' /etc/selinux/config
 
 echo $((++step))') - yum install nginx v. 1.14.1'
 yum install -y nginx-1.14.1
+sudo cp ./config/nginx.conf /etc/nginx/sites-available/nginx_vhost > /dev/null 2>&1
 systemctl start nginx
 systemctl enable nginx
 
@@ -70,11 +67,15 @@ usermod -aG nginx vagrant
 echo $((++step))') - add nginx to vagrant group'
 usermod -aG vagrant nginx
 
-echo $((++step))') - !IMP: fix permissions to permit nginx access to root web server'
-chmod 775 /home/vagrant
+# echo $((++step))') - !IMP: fix permissions to permit to nginx to access to root web server'
+# chmod 775 /home/vagrant  ### ERROR: it blocks SSH authentication !!
 
 echo $((++step))') - dnf install git'
 dnf install -y git
+
+echo $((++step))') - ssh-keygen - keys pair generation'
+ssh-keygen -b 2048 -t rsa -f /home/vagrant/.ssh/id_rsa -q -N ""
+chown -R vagrant:vagrant /home/vagrant/.ssh
 
 echo $((++step))') - install composer & move to global use'
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -83,13 +84,11 @@ php composer-setup.php
 php -r "unlink('composer-setup.php');"
 mv /home/vagrant/composer.phar /usr/local/bin/composer
 
-echo $((++step))') - install composer'
-# echo $((++step))') - Switch to vagrant User'
-# su - vagrant
+echo $((++step))') - install node v10.18.1 & npm v6.13.4'
+dnf install -y @nodejs:10.18.1
+dnf install -y @npm:6.13.4
 
-echo $((++step))') - install node & npm ????? versions ????'
-
-echo '..TBC..'
+#echo '..TBC..'
 echo OK
 
 
