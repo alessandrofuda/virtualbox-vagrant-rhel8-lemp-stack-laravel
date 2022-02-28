@@ -13,7 +13,7 @@ Scaffolding to make VirtualBox/Vagrant VM with:
 ## Full-scaffolding Command
 #### First run (or re-run) provisioner script, passing some env variables:
 
-`RHEL_USERNAME='username' RHEL_PASSWORD='password' vagrant provision`
+`RHEL_USERNAME='username' RHEL_PASSWORD='password' vagrant up --provision`
 
 or
 
