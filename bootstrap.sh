@@ -26,7 +26,7 @@ chmod -R 775 /home/vagrant/code || error_exit $((++step - 1))
 # yum update -y
 
 echo $((++step))') - subscription manager to Rhel repo'
-subscription-manager register --username $RHEL_USERNAME --password $RHEL_PASSWORD --auto-attach || error_exit $((++step - 1))
+subscription-manager register --username $RHEL_USERNAME --password $RHEL_PASSWORD --auto-attach
 
 echo $((++step))') - yum update'
 yum update -y || error_exit $((++step - 1))
@@ -35,13 +35,13 @@ echo $((++step))') - yum install nano'
 yum install -y nano || error_exit $((++step - 1))
 
 echo $((++step))') - disable SELinux (disable temp & definitiv)'
-setenforce 0 || error_exit $((++step - 1))
-sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config || error_exit $((++step - 1))
-sed -i 's/SELINUX=permissive/SELINUX=disabled/' /etc/selinux/config || error_exit $((++step - 1))
+setenforce 0
+sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
+sed -i 's/SELINUX=permissive/SELINUX=disabled/' /etc/selinux/config
 
 echo $((++step))') - yum install nginx v. 1.14.1'
 yum install -y nginx-1.14.1 || error_exit $((++step - 1))
-sudo cp ./config/nginx.conf /etc/nginx/conf.d/myapp.conf || error_exit $((++step - 1))
+sudo cp ./config/nginx.conf /etc/nginx/conf.d/myapp.conf || error_exit $((++step - 1)) ## TODO fix !
 systemctl start nginx || error_exit $((++step - 1))
 systemctl enable nginx || error_exit $((++step - 1))
 
