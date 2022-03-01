@@ -10,6 +10,8 @@ Scaffolding to make VirtualBox/Vagrant VM with:
 - npm
 - vagrant user/group configuration
 
+<br/>
+
 ## A) Full Environment scaffolding
 #### Run provisioner script, passing some env variables:
 
@@ -26,11 +28,12 @@ https://access.redhat.com/management
 #### If already provisioned, simply:
 `vagrant up`
 
-.
+<br/>
+<br/>
 
 ---
 
-.
+<br/>
 
 ## B) Application Scaffolding
 
