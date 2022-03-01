@@ -26,7 +26,11 @@ https://access.redhat.com/management
 #### If already provisioned, simply:
 `vagrant up`
 
-___
+.
+
+---
+
+.
 
 ## B) Application Scaffolding
 
