@@ -21,12 +21,14 @@ or
 
 Rhel username & password are your subscription-manager credential to rhel 8 site
 
+https://access.redhat.com/management 
+
 #### If already provisioned, simply:
 `vagrant up`
 
 ___
 
-### B) Application Scaffolding
+## B) Application Scaffolding
 
 1. Clone Laravel app:
 
