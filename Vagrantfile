@@ -46,7 +46,7 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  # config.vm.synced_folder "./", "/bootstrap_test"
+  config.vm.synced_folder "./config", "/home/vagrant/config", create: true, group: "root", owner: "root"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -74,7 +74,9 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "shell" do |s|
       s.path = "bootstrap.sh"
-      s.env = { 'RHEL_USERNAME' => ENV['RHEL_USERNAME'], 'RHEL_PASSWORD' => ENV['RHEL_PASSWORD'] }
+      s.env = { 'RHEL_USERNAME' => ENV['RHEL_USERNAME'],
+                'RHEL_PASSWORD' => ENV['RHEL_PASSWORD'],
+                'APP_NAME' => ENV['APP_NAME'] }
   end
 
 end

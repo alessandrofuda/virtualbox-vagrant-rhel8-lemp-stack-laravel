@@ -13,11 +13,11 @@ Scaffolding to make VirtualBox/Vagrant VM with:
 ## Full-scaffolding Command
 #### First run (or re-run) provisioner script, passing some env variables:
 
-`RHEL_USERNAME='username' RHEL_PASSWORD='password' vagrant up --provision`
+`RHEL_USERNAME='username' RHEL_PASSWORD='password' APP_NAME='example_name' vagrant up --provision`
 
 or
 
-`RHEL_USERNAME='username' RHEL_PASSWORD='password' vagrant reload --provision` (Imp: use single quotes for pswd)
+`RHEL_USERNAME='username' RHEL_PASSWORD='password' APP_NAME='example_name' vagrant reload --provision` (Imp: use single quotes for pswd)
 
 Rhel username & password are your subscription-manager credential to rhel 8 site
 

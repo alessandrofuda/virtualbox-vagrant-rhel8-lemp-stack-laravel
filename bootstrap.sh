@@ -8,7 +8,10 @@ error_exit() {
 
 # variables def
 step=0
-APP_NAME='cybersec'
+START=`date +%s`
+echo $((++step))') - define ENV variable'
+# export APP_NAME='cybersec'
+echo 'APP_NAME: ' $APP_NAME
 
 
 
@@ -41,7 +44,12 @@ sed -i 's/SELINUX=permissive/SELINUX=disabled/' /etc/selinux/config
 
 echo $((++step))') - yum install nginx v. 1.14.1'
 yum install -y nginx-1.14.1 || error_exit $((++step - 1))
-sudo cp ./config/nginx.conf /etc/nginx/conf.d/myapp.conf || error_exit $((++step - 1)) ## TODO fix !
+sudo cp /home/vagrant/config/nginx/myapp.conf /etc/nginx/conf.d/myapp.conf || error_exit $((++step - 1))
+sed -i "s/_my_app_placeholder_/${APP_NAME}/" /etc/nginx/conf.d/myapp.conf || error_exit $((++step - 1))
+
+
+
+
 systemctl start nginx || error_exit $((++step - 1))
 systemctl enable nginx || error_exit $((++step - 1))
 
@@ -73,14 +81,14 @@ usermod -aG nginx vagrant || error_exit $((++step - 1))
 echo $((++step))') - add nginx to vagrant group'
 usermod -aG vagrant nginx || error_exit $((++step - 1))
 
-# echo $((++step))') - !IMP: fix permissions to permit to nginx to access to root web server'
-# chmod 775 /home/vagrant  ### ERROR: it blocks SSH authentication !!
+echo $((++step))') - !IMP: fix permissions to permit to nginx to access to root web server (only read, not write'
+chmod 755 /home/vagrant
 
 echo $((++step))') - dnf install git'
 dnf install -y git || error_exit $((++step - 1))
 
 echo $((++step))') - ssh-keygen - keys pair generation'
-ssh-keygen -b 2048 -t rsa -f /home/vagrant/.ssh/id_rsa -q -N "" || error_exit $((++step - 1))
+ssh-keygen -b 2048 -t rsa -f /home/vagrant/.ssh/id_rsa -q -N ""
 chown -R vagrant:vagrant /home/vagrant/.ssh || error_exit $((++step - 1))
 
 echo $((++step))') - install composer & move to global use'
@@ -91,11 +99,13 @@ php -r "unlink('composer-setup.php');"
 mv /home/vagrant/composer.phar /usr/local/bin/composer || error_exit $((++step - 1))
 
 echo $((++step))') - install node v10.18.1 & npm v6.13.4'
-dnf install -y @nodejs:10.18.1 || error_exit $((++step - 1))
-dnf install -y @npm:6.13.4 || error_exit $((++step - 1))
-
-#echo '..TBC..'
-echo OK
+dnf module list nodejs
+dnf module enable -y nodejs:10
+dnf install -y nodejs
 
 
-# yum update -y
+
+echo 'PROVISIONING COMPLETED'
+END=`date +%s`
+echo "Time: "$((END-START))" sec."
+
