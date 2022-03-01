@@ -43,9 +43,9 @@ https://access.redhat.com/management
 
 2. Add .env configuration
 
-`.env`
+`nano .env`
 
-4. Create DB and db User
+3. Create DB and db User
 
 `mysql -uroot -p`  (empty pswd)
 
@@ -57,6 +57,9 @@ https://access.redhat.com/management
 
 `mysql> FLUSH PRIVILEGES;`
 
-#### For DB configuration:
-When mysql installed, run:
-`mysql_secure_installation` to configure manually DB, root usr/pswd, creates user, DB, ecc..
+For DB configuration: you can use `mysql_secure_installation` too, as alternative, to manually configure DB, root usr/pswd, creates User, DB, ecc..
+
+4. Run deploy script
+
+example: `./deploy.sh`
+
