@@ -15,11 +15,31 @@ Scaffolding to make VirtualBox/Vagrant VM with:
 ## A) Full Environment scaffolding
 #### Run provisioner script, passing some env variables:
 
+1) On Linux
 `RHEL_USERNAME='username' RHEL_PASSWORD='password' APP_NAME='example_name' vagrant up --provision`
 
 or
 
 `RHEL_USERNAME='username' RHEL_PASSWORD='password' APP_NAME='example_name' vagrant reload --provision` (Imp: use single quotes for pswd)
+
+<br/>
+
+2) On Windows
+
+Use: CMD shell (NOT Powershell) to set env variables 
+
+`set RHEL_USERNAME='username' && set RHEL_PASSWORD='password' && set APP_NAME='example_name' && vagrant up --provision`
+
+(If there is error with subscription manager (to rhel site), connect directly via ssh into VM and doing direct subscription with:
+`subscription-manager register`  and `subscription-manager attach`. Then exit from VM and `vagrant reload --provision`
+
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
 
 Rhel username & password are your subscription-manager credential to rhel 8 site
 

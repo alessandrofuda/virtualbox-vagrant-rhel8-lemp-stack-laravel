@@ -10,7 +10,7 @@ error_exit() {
 step=0
 START=`date +%s`
 echo $((++step))') - define ENV variable'
-# export APP_NAME='cybersec'
+export APP_NAME=$APP_NAME
 echo 'APP_NAME: ' $APP_NAME
 
 
