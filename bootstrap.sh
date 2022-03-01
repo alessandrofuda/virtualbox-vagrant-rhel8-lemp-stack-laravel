@@ -46,10 +46,6 @@ echo $((++step))') - yum install nginx v. 1.14.1'
 yum install -y nginx-1.14.1 || error_exit $((++step - 1))
 sudo cp /home/vagrant/config/nginx/myapp.conf /etc/nginx/conf.d/myapp.conf || error_exit $((++step - 1))
 sed -i "s/_my_app_placeholder_/${APP_NAME}/" /etc/nginx/conf.d/myapp.conf || error_exit $((++step - 1))
-
-
-
-
 systemctl start nginx || error_exit $((++step - 1))
 systemctl enable nginx || error_exit $((++step - 1))
 
@@ -61,7 +57,7 @@ systemctl reload firewalld || error_exit $((++step - 1))
 echo $((++step))') - dnf install php v. 7.4.6 & php-fpm 7.4.6'
 dnf install -y @php:7.4 || error_exit $((++step - 1))
 dnf install -y php php-cli php-common || error_exit $((++step - 1))
-dnf install -y php-mysqlnd php-zip || error_exit $((++step - 1))
+dnf install -y php-mysqlnd php-zip php-gd || error_exit $((++step - 1))
 sed -i 's/user = apache/user = nginx/' /etc/php-fpm.d/www.conf || error_exit $((++step - 1))
 sed -i 's/group = apache/group = nginx/' /etc/php-fpm.d/www.conf || error_exit $((++step - 1))
 systemctl start php-fpm || error_exit $((++step - 1))
