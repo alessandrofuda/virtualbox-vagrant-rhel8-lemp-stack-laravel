@@ -99,6 +99,8 @@ dnf module list nodejs
 dnf module enable -y nodejs:10
 dnf install -y nodejs
 
+echo $((++step))') - yum install rsync'
+yum install -y rsync || error_exit $((++step - 1))
 
 
 echo 'PROVISIONING COMPLETED'
