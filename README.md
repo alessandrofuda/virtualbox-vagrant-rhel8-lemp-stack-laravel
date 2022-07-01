@@ -30,6 +30,8 @@ or
 
 2) On Windows
 
+Set ENV variables directly from shell (CLI) with: `$Env:APP_NAME = 'example'`
+
 Use: CMD shell (NOT Powershell) to set env variables 
 
 `set RHEL_USERNAME='username' && set RHEL_PASSWORD='password' && set APP_NAME='example_name' && vagrant up --provision`
