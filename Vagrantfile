@@ -74,9 +74,15 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "shell" do |s|
       s.path = "bootstrap.sh"
-      s.env = { 'RHEL_USERNAME' => ENV['RHEL_USERNAME'],
-                'RHEL_PASSWORD' => ENV['RHEL_PASSWORD'],
-                'APP_NAME' => ENV['APP_NAME'] }
+      # with Linux OS 
+      # s.env = { 'RHEL_USERNAME' => ENV['RHEL_USERNAME'],
+      #          'RHEL_PASSWORD' => ENV['RHEL_PASSWORD'],
+      #          'APP_NAME' => ENV['APP_NAME'] }
+      # with Windows OS OR set ENV variable directly from Shell (CLI)
+      s.env = { 'RHEL_USERNAME' => '__ales.....@gmail.com___',
+                'RHEL_PASSWORD' => '__password__',
+                'APP_NAME' => 'dacos' }
+
   end
 
 end
