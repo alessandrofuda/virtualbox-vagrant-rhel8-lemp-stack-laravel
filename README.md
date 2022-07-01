@@ -12,6 +12,9 @@ Scaffolding to make VirtualBox/Vagrant VM with:
 
 <br/>
 
+## Main configuration file: 
+`Vagrantfile`
+
 ## A) Full Environment scaffolding
 #### Run provisioner script, passing some env variables:
 
