@@ -32,6 +32,8 @@ or
 
 Set ENV variables directly from shell (CLI) with: `$Env:APP_NAME = 'example'`
 
+Or
+
 Use: CMD shell (NOT Powershell) to set env variables 
 
 `set RHEL_USERNAME='username' && set RHEL_PASSWORD='password' && set APP_NAME='example_name' && vagrant up --provision`
@@ -39,7 +41,9 @@ Use: CMD shell (NOT Powershell) to set env variables
 (If there is error with subscription manager (to rhel site), connect directly via ssh into VM and doing direct subscription with:
 `subscription-manager register`  and `subscription-manager attach`. Then exit from VM and `vagrant reload --provision`
 
-APP_NAME env variable: set directly inside `Vagrant` config file 
+Or
+
+Set directly APP_NAME env variable into `Vagrantfile` config file 
 
 <br/>
 
