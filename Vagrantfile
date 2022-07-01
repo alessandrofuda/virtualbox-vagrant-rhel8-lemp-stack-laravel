@@ -82,7 +82,6 @@ Vagrant.configure("2") do |config|
       s.env = { 'RHEL_USERNAME' => '__ales.....@gmail.com___',
                 'RHEL_PASSWORD' => '__password__',
                 'APP_NAME' => 'dacos' }
-
   end
 
 end
