@@ -81,7 +81,13 @@ https://access.redhat.com/management
 
 For DB configuration: you can use `mysql_secure_installation` too, as alternative, to manually configure DB, root usr/pswd, creates User, DB, ecc..
 
-4. Run deploy script
+4. Init Composer & NPM
+
+`composer install`
+
+`npm install`
+
+5. Run deploy script
 
 example: `./deploy.sh`
 
