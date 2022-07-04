@@ -46,7 +46,7 @@ Or
 Set directly APP_NAME env variable into `Vagrantfile` config file 
 
 <br/>
-
+Important: create key with ssh-keygen like a vagrant user (NOT root).--> create it manually inside the VM (like NOT root user)
 <br/>
 
 <br/>
