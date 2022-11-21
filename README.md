@@ -9,6 +9,8 @@ Scaffolding to make VirtualBox/Vagrant VM with:
 - node, 
 - npm
 - vagrant user/group configuration
+More:
+- Oracle Connector (Oci8 php ext)
 
 <br/>
 

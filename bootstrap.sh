@@ -103,7 +103,55 @@ echo $((++step))') - yum install rsync'
 yum install -y rsync || error_exit $((++step - 1))
 
 
+
+
+########### ==>  INSTALL ORACLE INSTANT CLIENT OCI8 PHP EXT  <== #########################################
+echo $((++step))') - Install Oci8 php ext and Oracle Instant Client Connector'
+yum install -y zip unzip || error_exit $((++step - 1))
+mkdir -p /opt/oracle
+cd /opt/oracle
+echo $((++step))') - Wget ORACLE repos..'
+wget -nc https://download.oracle.com/otn_software/linux/instantclient/218000/instantclient-basic-linux.x64-21.8.0.0.0dbru.zip
+wget -nc https://download.oracle.com/otn_software/linux/instantclient/218000/instantclient-sdk-linux.x64-21.8.0.0.0dbru.zip
+wget -nc https://download.oracle.com/otn_software/linux/instantclient/218000/instantclient-sqlplus-linux.x64-21.8.0.0.0dbru.zip
+# && export LD_LIBRARY_PATH=/opt/oracle/instantclient_21_8
+echo $((++step))') - Unzip ORACLE repos..'
+unzip instantclient-basic-linux.x64-21.8.0.0.0dbru.zip
+unzip instantclient-sdk-linux.x64-21.8.0.0.0dbru.zip 
+unzip instantclient-sqlplus-linux.x64-21.8.0.0.0dbru.zip 
+echo $((++step))') - Using PECL to install oci8 php ext'
+yum install -y php-pear php-devel
+pecl channel-update pecl.php.net
+echo "instantclient,/opt/oracle/instantclient_21_8" | pecl install oci8-2.2.0
+echo /opt/oracle/instantclient_21_8 > /etc/ld.so.conf.d/oracle-instantclient.conf
+ldconfig
+################# FINISH ORACLE INSTANT CLIENT ############################################################
+
+
+
+
 echo 'PROVISIONING COMPLETED'
 END=`date +%s`
 echo "Time: "$((END-START))" sec."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
