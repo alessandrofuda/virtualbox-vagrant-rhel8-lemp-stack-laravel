@@ -125,6 +125,9 @@ pecl channel-update pecl.php.net
 echo "instantclient,/opt/oracle/instantclient_21_8" | pecl install oci8-2.2.0
 echo /opt/oracle/instantclient_21_8 > /etc/ld.so.conf.d/oracle-instantclient.conf
 ldconfig
+echo $((++step))') - enable php ext && restart process'
+echo extension=oci8.so >> /etc/php.ini
+systemctl restart php-fpm || error_exit $((++step - 1))
 ################# FINISH ORACLE INSTANT CLIENT ############################################################
 
 
