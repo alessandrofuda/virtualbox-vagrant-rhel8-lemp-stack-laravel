@@ -122,6 +122,7 @@ unzip instantclient-sqlplus-linux.x64-21.8.0.0.0dbru.zip
 echo $((++step))') - Using PECL to install oci8 php ext'
 yum install -y php-pear php-devel
 # IMPORTANT: in prod server we haven't connection to php.net, so --> $ pecl install -O /path/to/oci8-2.2.0.tgz (OFFLINE installation) !!
+# on prod server use: $ pecl install -O /path/to/file/xxxxx.tgz
 pecl channel-update pecl.php.net
 echo "instantclient,/opt/oracle/instantclient_21_8" | pecl install oci8-2.2.0
 echo /opt/oracle/instantclient_21_8 > /etc/ld.so.conf.d/oracle-instantclient.conf
