@@ -9,6 +9,8 @@ Scaffolding to make VirtualBox/Vagrant VM with:
 - node, 
 - npm
 - vagrant user/group configuration
+More:
+- Oracle Connector (Oci8 php ext)
 
 <br/>
 
@@ -17,6 +19,7 @@ Scaffolding to make VirtualBox/Vagrant VM with:
 
 ## A) Full Environment scaffolding
 #### Run provisioner script, passing some env variables:
+##### For DACOS proj. --> for ORACLE DB connector: in PROD server install manually oci8-2.2.0.tgz php extension (FORBIDDEN BY COMPANY FIREWALL RULES)
 
 1) On Linux
 
