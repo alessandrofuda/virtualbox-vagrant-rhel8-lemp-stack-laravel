@@ -81,9 +81,9 @@ Vagrant.configure("2") do |config|
       #          'RHEL_PASSWORD' => ENV['RHEL_PASSWORD'],
       #          'APP_NAME' => ENV['APP_NAME'] }
       # with Windows OS OR set ENV variable directly from Shell (CLI)
-      s.env = { 'RHEL_USERNAME' => 'alessandro.fuda@gmail.com',
+      s.env = { 'RHEL_USERNAME' => 'al____da@gmail.com',
                 'RHEL_PASSWORD' => '__des____',
-                'APP_NAME' => 'cybersec' }
+                'APP_NAME' => '__cybers_ec__' }
   end
 
 end
